@@ -14,7 +14,7 @@
 }
 
 .input, .sign-in {
-    padding: 4px 4px;
+    padding: 5px 5px;
 }
 
 .sign-in, .chat-box-button {
@@ -36,11 +36,18 @@
     left: 30%;
 }
 
-.chat-input {
+#chat-input {
     width: 96%;
-    height: 88%;
+    height: 83%;
     border-bottom: 1px solid black;
     margin: 5px;
+}
+
+#broadcast {
+    width: 96%;
+    margin: 5px;
+    background-color: beige;
+    font-weight: bold;
 }
 
 .chat-box {

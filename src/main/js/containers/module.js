@@ -28,8 +28,10 @@ class Module extends Component {
     joinChat(e) {
         e.preventDefault();
         const chatName = document.forms["joinChat"]["oldChatRoom"].value;
+        let found = false;
         this.state.chatRooms.map(chatRoom => {
             if (chatRoom.chatRoomName === chatName) {
+                found = true;
                 const newChatRoom = {
                     chatRoomName: chatName,
                     users: [user],
@@ -41,13 +43,13 @@ class Module extends Component {
                     entity: newChatRoom,
                     headers: {'Content-Type': 'application/json'}
                 }).done(response => {
-                    console.log(response);
+                    window.location = "/chatRoom/" + chatName;
                 });
-                window.location = "/chatRoom/" + chatName;
-            } else {
-                alert("No such room man!");
             }
         });
+        if (!found) {
+            alert("No such room man!");
+        }
     };
 
     createChat(e) {
@@ -59,11 +61,10 @@ class Module extends Component {
             users: [user],
             messageHistory: []
         };
-        this.updateDataBase(newChatRoom);
-        window.location = "/chatRoom/" + chatName;
+        this.updateDataBase(newChatRoom, chatName);
     };
 
-    updateDataBase(data) {
+    updateDataBase(data, chatName) {
         follow(client, root, ['chatRooms']).then(chatRoomCollection => {
             return client({
                 method: 'POST',
@@ -72,7 +73,7 @@ class Module extends Component {
                 headers: {'Content-Type': 'application/json'}
             })
         }).done(response => {
-            console.log(response);
+            window.location = "/chatRoom/" + chatName;
         });
     }
 

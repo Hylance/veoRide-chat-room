@@ -22000,8 +22000,10 @@
 	        value: function joinChat(e) {
 	            e.preventDefault();
 	            var chatName = document.forms["joinChat"]["oldChatRoom"].value;
+	            var found = false;
 	            this.state.chatRooms.map(function (chatRoom) {
 	                if (chatRoom.chatRoomName === chatName) {
+	                    found = true;
 	                    var newChatRoom = {
 	                        chatRoomName: chatName,
 	                        users: [user],
@@ -22013,13 +22015,13 @@
 	                        entity: newChatRoom,
 	                        headers: { 'Content-Type': 'application/json' }
 	                    }).done(function (response) {
-	                        console.log(response);
+	                        window.location = "/chatRoom/" + chatName;
 	                    });
-	                    window.location = "/chatRoom/" + chatName;
-	                } else {
-	                    alert("No such room man!");
 	                }
 	            });
+	            if (!found) {
+	                alert("No such room man!");
+	            }
 	        }
 	    }, {
 	        key: 'createChat',
@@ -22032,12 +22034,11 @@
 	                users: [user],
 	                messageHistory: []
 	            };
-	            this.updateDataBase(newChatRoom);
-	            window.location = "/chatRoom/" + chatName;
+	            this.updateDataBase(newChatRoom, chatName);
 	        }
 	    }, {
 	        key: 'updateDataBase',
-	        value: function updateDataBase(data) {
+	        value: function updateDataBase(data, chatName) {
 	            (0, _follow2.default)(_client2.default, root, ['chatRooms']).then(function (chatRoomCollection) {
 	                return (0, _client2.default)({
 	                    method: 'POST',
@@ -22046,7 +22047,7 @@
 	                    headers: { 'Content-Type': 'application/json' }
 	                });
 	            }).done(function (response) {
-	                console.log(response);
+	                window.location = "/chatRoom/" + chatName;
 	            });
 	        }
 	    }, {
