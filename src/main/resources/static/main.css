@@ -1,0 +1,52 @@
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    border-radius: 5px;
+}
+.register {
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    margin: 10px;
+}
+
+.input, .sign-in {
+    padding: 4px 4px;
+}
+
+.sign-in, .chat-box-button {
+    position: relative;
+    left: 42%;
+}
+
+.module {
+    text-align: center;
+    margin-top: 200px;
+}
+
+.chat-body {
+    width: 500px;
+    height: 600px;
+    border: 1px solid black;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+}
+
+.chat-input {
+    width: 96%;
+    height: 88%;
+    border-bottom: 1px solid black;
+    margin: 5px;
+}
+
+.chat-box {
+    width: 100%;
+}
+
+.input {
+    text-align: center;
+}

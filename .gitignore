@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+.mvn/
+images/
+mvnw
+mvnw.bat
+node_modules/
+target/
+veotest.iml
